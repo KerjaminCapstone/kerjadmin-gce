@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Homepage (non-login)
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
+});
+
+// Route auth
+Auth::routes(['register' => false]);
+
+// Route untuk admin
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-users')->group(function() {
+    Route::resource('/freelancers', 'FreelancerController');
+    Route::resource('/complaints', 'ComplaintManagementController');
+});
+
+// Route umum
+Route::resource('/complaints', 'ComplaintView');
+
+// Route Logout
+Route::get('/logout', function(){
+    // logout user
+    Auth::logout();
+    // redirect to homepage
+    return redirect('/');
 });
