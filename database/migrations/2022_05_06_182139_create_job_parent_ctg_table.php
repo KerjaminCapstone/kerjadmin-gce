@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateJobParentCtgTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->string('id_user')->unique();
-            $table->string('name');
-            $table->string('no_wa');
-            $table->string('email')->unique();
-            $table->string('password');
+        Schema::create('job_code', function (Blueprint $table) {
+            $table->string('job_code')->unique();
+            $table->string('job_category');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('job_code');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateOrderStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->string('id_user')->unique();
-            $table->string('name');
-            $table->string('no_wa');
-            $table->string('email')->unique();
-            $table->string('password');
+        Schema::create('order_status', function (Blueprint $table) {
+            $table->bigIncrements('id_status'); // 1 = diterima; 2 = proses; 3 = selesai; 4 = ditolak; 5 = assigned (default);
+            $table->string('status_name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('order_status');
     }
 }
