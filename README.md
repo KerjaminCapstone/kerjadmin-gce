@@ -3,7 +3,7 @@ This is a web aplication for admin to create freelancer account.
 We built this app with Laravel 7 and Cloud SQL (Postgresql) for database.
 We also define our database structure for our apps (kerjadmin and both android app for client and freelancer) here at database/migrations.
 
-# How to try this app?
+# How to try this app? (currently unavailable)
 Try this app at http://34.142.153.176
 
 ## ERD 
